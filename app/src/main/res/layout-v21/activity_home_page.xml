@@ -1,0 +1,472 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".HomePage">
+
+    <Space
+        android:id="@+id/walletSpace"
+        android:layout_width="0dp"
+        android:layout_height="250dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <ImageView
+        android:id="@+id/walletbackground"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="@+id/walletSpace"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/walletSpace"
+        app:layout_constraintTop_toTopOf="@+id/walletSpace"
+        app:srcCompat="@color/alert_red" />
+
+    <Button
+        android:id="@+id/setting"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:insetTop="0dp"
+        android:insetBottom="0dp"
+        android:stateListAnimator="@null"
+        app:backgroundTint="@color/transparent"
+        app:elevation="0dp"
+        app:icon="@drawable/ic_setting"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.93"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.04000002" />
+
+    <TextView
+        android:id="@+id/currency"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:text="@string/imp_currency"
+        android:textColor="@color/white"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.12" />
+
+    <TextView
+        android:id="@+id/walletBalance"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="1.12"
+        android:gravity="center"
+        android:textSize="36sp"
+        app:layout_constraintBottom_toBottomOf="@+id/walletSpace"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/currency"
+        app:layout_constraintVertical_bias="0.110000014" />
+
+    <Space
+        android:id="@+id/menu"
+        android:layout_width="0dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="200dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginRight="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <ImageView
+        android:id="@+id/menubackground"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="@+id/menu"
+        app:layout_constraintEnd_toEndOf="@+id/menu"
+        app:layout_constraintStart_toStartOf="@+id/menu"
+        app:layout_constraintTop_toTopOf="@+id/menu"
+        app:srcCompat="@color/menuBar_lightBlue" />
+
+    <ImageView
+        android:id="@+id/scanIcon"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        app:layout_constraintBottom_toBottomOf="@+id/scanButton"
+        app:layout_constraintEnd_toEndOf="@+id/scanButton"
+        app:layout_constraintStart_toStartOf="@+id/scanButton"
+        app:layout_constraintTop_toTopOf="@+id/scanButton"
+        app:layout_constraintVertical_bias="0.3"
+        app:srcCompat="@drawable/ic_scan" />
+
+    <Button
+        android:id="@+id/scanButton"
+        android:layout_width="80dp"
+        android:layout_height="0dp"
+        android:insetTop="6dp"
+        android:insetBottom="6dp"
+        android:lines="6"
+        android:stateListAnimator="@null"
+        android:text="\n \n \n \n \n Scan"
+        android:textColor="@color/black"
+        android:textSize="8sp"
+        app:backgroundTint="@color/transparent"
+        app:elevation="0dp"
+        app:layout_constraintBottom_toBottomOf="@+id/menu"
+        app:layout_constraintEnd_toEndOf="@+id/menu"
+        app:layout_constraintHorizontal_bias="0.02"
+        app:layout_constraintStart_toStartOf="@+id/menu"
+        app:layout_constraintTop_toTopOf="@+id/menu"
+        app:rippleColor="@color/transparent"
+        />
+
+    <ImageView
+        android:id="@+id/payIcon"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        app:layout_constraintBottom_toBottomOf="@+id/paybutton"
+        app:layout_constraintEnd_toEndOf="@+id/paybutton"
+        app:layout_constraintStart_toStartOf="@+id/paybutton"
+        app:layout_constraintTop_toTopOf="@+id/paybutton"
+        app:layout_constraintVertical_bias="0.3"
+        app:srcCompat="@drawable/ic_pay" />
+
+    <Button
+        android:id="@+id/paybutton"
+        android:layout_width="80dp"
+        android:layout_height="0dp"
+        android:insetTop="6dp"
+        android:insetBottom="6dp"
+        android:lines="6"
+        android:stateListAnimator="@null"
+        android:text="\n \n \n \n \n Receive"
+        android:textColor="@color/black"
+        android:textSize="8sp"
+        app:backgroundTint="@color/transparent"
+        app:elevation="0dp"
+        app:layout_constraintBottom_toBottomOf="@+id/menu"
+        app:layout_constraintEnd_toEndOf="@+id/menu"
+        app:layout_constraintHorizontal_bias="0.35"
+        app:layout_constraintStart_toStartOf="@+id/menu"
+        app:layout_constraintTop_toTopOf="@+id/menu"
+        app:rippleColor="@color/transparent" />
+
+    <ImageView
+        android:id="@+id/transferIcon"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        app:layout_constraintBottom_toBottomOf="@+id/transferButton"
+        app:layout_constraintEnd_toStartOf="@+id/transferButton"
+        app:layout_constraintStart_toEndOf="@+id/transferButton"
+        app:layout_constraintTop_toTopOf="@+id/transferButton"
+        app:layout_constraintVertical_bias="0.3"
+        app:srcCompat="@drawable/ic_transfer" />
+
+    <Button
+        android:id="@+id/transferButton"
+        android:layout_width="80dp"
+        android:layout_height="0dp"
+        android:insetTop="6dp"
+        android:insetBottom="6dp"
+        android:lines="6"
+        android:stateListAnimator="@null"
+        android:text="\n \n \n \n Transfer"
+        android:textColor="@color/black"
+        android:textSize="8sp"
+        app:backgroundTint="@color/transparent"
+        app:elevation="0dp"
+        app:layout_constraintBottom_toBottomOf="@+id/menu"
+        app:layout_constraintEnd_toEndOf="@+id/menu"
+        app:layout_constraintHorizontal_bias="0.65"
+        app:layout_constraintStart_toStartOf="@+id/menu"
+        app:layout_constraintTop_toTopOf="@+id/menu"
+        app:rippleColor="@color/transparent" />
+
+    <ImageView
+        android:id="@+id/reloadIcon"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        app:layout_constraintBottom_toBottomOf="@+id/reloadButton"
+        app:layout_constraintEnd_toEndOf="@+id/reloadButton"
+        app:layout_constraintStart_toStartOf="@+id/reloadButton"
+        app:layout_constraintTop_toTopOf="@+id/reloadButton"
+        app:layout_constraintVertical_bias="0.3"
+        app:srcCompat="@drawable/ic_reload" />
+
+    <Button
+        android:id="@+id/reloadButton"
+        android:layout_width="80dp"
+        android:layout_height="0dp"
+        android:insetTop="6dp"
+        android:insetBottom="6dp"
+        android:lines="6"
+        android:stateListAnimator="@null"
+        android:text="\n \n \n \n \n Reload"
+        android:textColor="@color/black"
+        android:textSize="8sp"
+        app:backgroundTint="@color/transparent"
+        app:elevation="0dp"
+        app:layout_constraintBottom_toBottomOf="@+id/menu"
+        app:layout_constraintEnd_toEndOf="@+id/menu"
+        app:layout_constraintHorizontal_bias="0.98"
+        app:layout_constraintStart_toStartOf="@+id/menu"
+        app:layout_constraintTop_toTopOf="@+id/menu"
+        app:rippleColor="@color/transparent" />
+
+    <Space
+        android:id="@+id/eventSpace"
+        android:layout_width="0dp"
+        android:layout_height="200dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/menu"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/eventTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/imp_events"
+        app:layout_constraintBottom_toBottomOf="@+id/eventSpace"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.05"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/eventSpace"
+        app:layout_constraintVertical_bias="0.050000012" />
+
+    <Space
+        android:id="@+id/event"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="50dp"
+        app:layout_constraintBottom_toBottomOf="@+id/eventSpace"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/eventSpace"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <ImageButton
+        android:id="@+id/eventPic1"
+        android:layout_width="120dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="@+id/eventSpace"
+        app:layout_constraintEnd_toEndOf="@+id/event"
+        app:layout_constraintHorizontal_bias="0.05"
+        app:layout_constraintStart_toStartOf="@+id/event"
+        app:layout_constraintTop_toTopOf="@+id/event"
+        app:srcCompat="@drawable/ic_launcher_background" />
+
+    <ImageButton
+        android:id="@+id/eventPic2"
+        android:layout_width="120dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="@+id/eventSpace"
+        app:layout_constraintEnd_toEndOf="@+id/event"
+        app:layout_constraintStart_toStartOf="@+id/event"
+        app:layout_constraintTop_toTopOf="@+id/event"
+        app:srcCompat="@drawable/ic_launcher_background" />
+
+    <ImageButton
+        android:id="@+id/eventPic3"
+        android:layout_width="120dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="@+id/eventSpace"
+        app:layout_constraintEnd_toEndOf="@+id/event"
+        app:layout_constraintHorizontal_bias="0.95"
+        app:layout_constraintStart_toStartOf="@+id/event"
+        app:layout_constraintTop_toTopOf="@+id/event"
+        app:srcCompat="@drawable/ic_launcher_background" />
+
+    <Space
+        android:id="@+id/transactionsSpace"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/eventSpace"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.05"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/transactionsSpace"
+        app:layout_constraintVertical_bias="0.050000012" />
+
+    <Space
+        android:id="@+id/space5"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="50dp"
+        app:layout_constraintBottom_toBottomOf="@+id/transactionsSpace"
+        app:layout_constraintEnd_toEndOf="@+id/transactionsSpace"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/transactionsSpace" />
+
+    <Space
+        android:id="@+id/tTile1"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/space5"
+        app:layout_constraintStart_toStartOf="@+id/space5"
+        app:layout_constraintTop_toTopOf="@+id/space5"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <ImageView
+        android:id="@+id/tTileback1"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="@+id/tTile1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/tTile1"
+        app:layout_constraintTop_toTopOf="@+id/space5"
+        app:srcCompat="@color/tab_passive_purple" />
+
+    <TextView
+        android:id="@+id/tDate1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="transasctionDate"
+        android:textColor="@color/subtitle_grey"
+        android:textSize="8sp"
+        app:layout_constraintBottom_toBottomOf="@+id/tTile1"
+        app:layout_constraintEnd_toEndOf="@+id/tTile1"
+        app:layout_constraintHorizontal_bias="0.94"
+        app:layout_constraintStart_toStartOf="@+id/tTile1"
+        app:layout_constraintTop_toBottomOf="@+id/tTitle1"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/tAmount1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="transasctionAmount"
+        android:textColor="@color/success_green"
+        app:layout_constraintBottom_toBottomOf="@+id/tTile1"
+        app:layout_constraintEnd_toEndOf="@+id/tTile1"
+        app:layout_constraintHorizontal_bias="0.95"
+        app:layout_constraintStart_toStartOf="@+id/tTile1"
+        app:layout_constraintTop_toTopOf="@+id/space5"
+        app:layout_constraintVertical_bias="0.19999999" />
+
+    <TextView
+        android:id="@+id/tTitle1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="transasctionTitle"
+        android:textColor="@color/title_grey"
+        app:layout_constraintBottom_toBottomOf="@+id/tTile1"
+        app:layout_constraintEnd_toEndOf="@+id/tTile1"
+        app:layout_constraintHorizontal_bias="0.05"
+        app:layout_constraintStart_toStartOf="@+id/tTile1"
+        app:layout_constraintTop_toTopOf="@+id/space5"
+        app:layout_constraintVertical_bias="0.19999999" />
+
+
+    <TextView
+        android:id="@+id/tSubtittle1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="transasctionType"
+        android:textColor="@color/subtitle_grey"
+        android:textSize="8sp"
+        app:layout_constraintBottom_toBottomOf="@+id/tTile1"
+        app:layout_constraintEnd_toEndOf="@+id/tTile1"
+        app:layout_constraintHorizontal_bias="0.05"
+        app:layout_constraintStart_toStartOf="@+id/tTile1"
+        app:layout_constraintTop_toBottomOf="@+id/tTitle1"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Space
+        android:id="@+id/tTile2"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/space5"
+        app:layout_constraintStart_toStartOf="@+id/space5"
+        app:layout_constraintTop_toTopOf="@+id/space5"
+        app:layout_constraintVertical_bias="0.65999997" />
+
+    <ImageView
+        android:id="@+id/tTileback2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="@+id/tTile2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/tTile2"
+        app:layout_constraintTop_toTopOf="@+id/tTile2"
+        app:srcCompat="@color/tab_passive_purple" />
+
+    <TextView
+        android:id="@+id/tTitle2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="transasctionTitle"
+        android:textColor="@color/title_grey"
+        app:layout_constraintBottom_toBottomOf="@+id/tTile2"
+        app:layout_constraintEnd_toEndOf="@+id/tTile2"
+        app:layout_constraintHorizontal_bias="0.05"
+        app:layout_constraintStart_toStartOf="@+id/tTile2"
+        app:layout_constraintTop_toTopOf="@+id/tTile2"
+        app:layout_constraintVertical_bias="0.19999999" />
+
+
+    <TextView
+        android:id="@+id/tSubtittle2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="transasctionType"
+        android:textColor="@color/subtitle_grey"
+        android:textSize="8sp"
+        app:layout_constraintBottom_toBottomOf="@+id/tTile2"
+        app:layout_constraintEnd_toEndOf="@+id/tTile2"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/tTitle2"
+        app:layout_constraintTop_toBottomOf="@+id/tTitle2"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/tAmount2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="transasctionAmount"
+        android:textColor="@color/success_green"
+        app:layout_constraintBottom_toBottomOf="@+id/tTile2"
+        app:layout_constraintEnd_toEndOf="@+id/tTile2"
+        app:layout_constraintHorizontal_bias="0.95"
+        app:layout_constraintStart_toStartOf="@+id/tTile2"
+        app:layout_constraintTop_toTopOf="@+id/tTile2"
+        app:layout_constraintVertical_bias="0.19999999" />
+
+    <TextView
+        android:id="@+id/tDate2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="transasctionDate"
+        android:textColor="@color/subtitle_grey"
+        android:textSize="8sp"
+        app:layout_constraintBottom_toBottomOf="@+id/tTile2"
+        app:layout_constraintEnd_toEndOf="@+id/tTile2"
+        app:layout_constraintHorizontal_bias="0.95"
+        app:layout_constraintStart_toStartOf="@+id/tTile2"
+        app:layout_constraintTop_toBottomOf="@+id/tAmount2"
+        app:layout_constraintVertical_bias="0.0" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

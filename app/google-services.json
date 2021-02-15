@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "456340779297",
+    "project_id": "twopay-1102",
+    "storage_bucket": "twopay-1102.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:456340779297:android:9513a13cfd5472a9db8e60",
+        "android_client_info": {
+          "package_name": "com.twoinc.twopay"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "456340779297-5qlkarmofd30lniujsmap2idsauhaa7i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDRultB-HgNHEJ6EcBvDCeVG2vDZFdZ8Oo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "456340779297-5qlkarmofd30lniujsmap2idsauhaa7i.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
