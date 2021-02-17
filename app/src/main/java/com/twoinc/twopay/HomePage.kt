@@ -31,7 +31,7 @@ class HomePage : AppCompatActivity(){
         val username = intent.getStringExtra("Username")
         val password = intent.getStringExtra("Password")
         val balance = intent.getStringExtra("Wallet")
-        val walletBalance = null
+        var walletBalance: String = " "
         var userid:String= " "
 
         val userIdRef = db.collection("Users").whereEqualTo("Username",username)
@@ -46,11 +46,6 @@ class HomePage : AppCompatActivity(){
                     Log.w(TAG, "Error getting documents: ", exception)
                 }
 
-        val changePage = Intent(this,Transfer::class.java)
-        changePage.putExtra("Username",username)
-        changePage.putExtra("Password",password)
-        changePage.putExtra("Wallet",balance)
-
         if(balance == null){
             val docRef = db.collection("Users").whereEqualTo("Username", username)
             docRef.get()
@@ -58,7 +53,7 @@ class HomePage : AppCompatActivity(){
                         for (document in documents) {
                             val data = document.data
                             var wallet = document.data["Wallet"].toString()
-                            changePage.putExtra("Wallet",wallet)
+                            walletBalance = wallet
                             accountBalance.setText(wallet)
                         }
                     }
@@ -75,7 +70,7 @@ class HomePage : AppCompatActivity(){
             val changePage = Intent(this,Transfer::class.java)
             changePage.putExtra("Username",username)
             changePage.putExtra("Password",password)
-            changePage.putExtra("Wallet",balance)
+            changePage.putExtra("Wallet",walletBalance)
             startActivity(changePage)
         }
 
@@ -86,6 +81,7 @@ class HomePage : AppCompatActivity(){
         val receiveBut = findViewById<Button>(R.id.paybutton)
         fun receivePage(){
             val changePage = Intent(this,Receive::class.java)
+            changePage.putExtra("Username",username)
             startActivity(changePage)
         }
         receiveBut.setOnClickListener(){

@@ -46,13 +46,25 @@ class Scan : AppCompatActivity() {
                 Toast.makeText(this, "Scanned: " + result.contents, Toast.LENGTH_LONG).show()
                 val textHolder = findViewById<TextView>(R.id.qrcode)
                 textHolder.setText("Qrcode : \n"+result.contents)
-                Log.d(TAG,"qrresult : ${result.contents}")
+                transferTo(result.contents)
             }
 
         } else {
             super.onActivityResult(requestCode, resultCode, data)
         }
     }
+
+    fun transferTo(qrcodeString: String){
+        if(qrcodeString.contains("twopay>accName=")){
+            val delimiter: String = "twopay>accName="
+            val username = qrcodeString.split(delimiter)[1]
+            Log.d(TAG,"Username : $username")
+        }else{
+            Log.d(TAG,"Wrong Format")
+        }
+
+    }
+
 
 
 }

@@ -1,7 +1,6 @@
 package com.twoinc.twopay
 
 import android.annotation.SuppressLint
-import android.content.Context
 import android.graphics.*
 import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.Drawable
@@ -12,7 +11,6 @@ import android.widget.ImageView
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.graphics.drawable.toBitmap
-import com.google.common.io.Resources.getResource
 import com.google.zxing.BarcodeFormat
 import com.google.zxing.MultiFormatWriter
 import com.google.zxing.WriterException
@@ -27,12 +25,11 @@ class Receive : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_receive)
 
-        val bitmap = generateQRCode("twopay--userid=uXCBY6uZNRxiueY1fk3m")
+        val qrcodeString = genQRString()
         val qrcodeLocator:ImageView = findViewById<ImageView>(R.id.qrcodeHolder)
-//        qrcodeLocator.setImageBitmap(bitmap)
         val logoDraw = resources.getDrawable(R.drawable.ic_logo_subtract,theme)
         val logoBit = logoDraw.toBitmap(width = 50,height = 50,config = null)
-        val qrcode_bitmap: Bitmap = generateQRCode("twopay>userid=uXCBY6uZNRxiueY1fk3m")
+        val qrcode_bitmap: Bitmap = generateQRCode("$qrcodeString")
         val merged :Bitmap = mergeBitmaps(logoBit, qrcode_bitmap);
         qrcodeLocator.setImageBitmap(merged)
     }
@@ -80,6 +77,12 @@ class Receive : AppCompatActivity() {
         val centreY:Float  = ((canvasHeight - resizeLogo.height) / 2).toFloat()
         canvas.drawBitmap(resizeLogo, centreX, centreY, null)
         return combined
+    }
+
+    fun genQRString(): String {
+        val intent = intent
+        val username = intent.getStringExtra("Username")
+        return "twopay>accName=$username"
     }
 
 
