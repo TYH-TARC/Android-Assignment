@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="highlight_purple">#D427FF</color>
+    <color name="button_yellow">#F9D27D</color>
+    <color name="tab_active_purple">#99D427FF</color>
+    <color name="tab_passive_purple">#59E57DE1</color>
+    <color name="gradient_StartColor">#80DEEA</color>
+    <color name="gradient_EndColor">#BE86D7</color>
+    <color name="menuBar_lightBlue">#DEB9EDF3</color>
+    <color name="alert_red">#FF0000</color>
+    <color name="success_green">#00FF29</color>
+    <color name="title_grey">#989898</color>
+    <color name="subtitle_grey">#A6A5A5</color>
+    <color name="transparent">#00FFFFFF</color>
+
+</resources>

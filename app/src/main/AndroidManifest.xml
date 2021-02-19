@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.twoinc.twopay">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_logo_color"
+        android:label="@string/app_name"
+        android:roundIcon="@drawable/ic_logo_color"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.TwoPay">
+        <activity android:name=".PrivacySetting"></activity>
+        <activity android:name=".ContactSetting" />
+        <activity android:name=".Setting" />
+        <activity android:name=".EventPage">
+            <intent-filter>
+                <action android:name="com.scytec.datamobile.vd.gui.android.AppPreferenceActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".Receive" />
+        <activity android:name=".reloadGateway" />
+        <activity android:name=".Reload" />
+        <activity android:name=".Scan" />
+        <activity
+            android:name=".Transfer"
+            android:parentActivityName=".HomePage">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".HomePage" />
+        </activity>
+        <activity android:name=".HomePage" />
+        <activity
+            android:name=".SignUp"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".CaptureActivity"
+            android:screenOrientation="portrait"
+            android:stateNotNeeded="false"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+    </application>
+
+</manifest>
