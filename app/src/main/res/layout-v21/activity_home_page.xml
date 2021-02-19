@@ -301,7 +301,7 @@
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
+        android:text="Recent Transaction"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.05"
@@ -345,13 +345,14 @@
         android:layout_height="wrap_content"
         android:text="transasctionDate"
         android:textColor="@color/subtitle_grey"
-        android:textSize="8sp"
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="@+id/tTile1"
         app:layout_constraintEnd_toEndOf="@+id/tTile1"
-        app:layout_constraintHorizontal_bias="0.94"
+        app:layout_constraintHorizontal_bias="0.944"
         app:layout_constraintStart_toStartOf="@+id/tTile1"
         app:layout_constraintTop_toBottomOf="@+id/tTitle1"
         app:layout_constraintVertical_bias="0.0" />
+
 
     <TextView
         android:id="@+id/tAmount1"
@@ -359,12 +360,13 @@
         android:layout_height="wrap_content"
         android:text="transasctionAmount"
         android:textColor="@color/success_green"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="@+id/tTile1"
         app:layout_constraintEnd_toEndOf="@+id/tTile1"
-        app:layout_constraintHorizontal_bias="0.95"
+        app:layout_constraintHorizontal_bias="0.93"
         app:layout_constraintStart_toStartOf="@+id/tTile1"
         app:layout_constraintTop_toTopOf="@+id/space5"
-        app:layout_constraintVertical_bias="0.19999999" />
+        app:layout_constraintVertical_bias="0.043" />
 
     <TextView
         android:id="@+id/tTitle1"
@@ -372,13 +374,13 @@
         android:layout_height="wrap_content"
         android:text="transasctionTitle"
         android:textColor="@color/title_grey"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="@+id/tTile1"
         app:layout_constraintEnd_toEndOf="@+id/tTile1"
-        app:layout_constraintHorizontal_bias="0.05"
+        app:layout_constraintHorizontal_bias="0.053"
         app:layout_constraintStart_toStartOf="@+id/tTile1"
         app:layout_constraintTop_toTopOf="@+id/space5"
-        app:layout_constraintVertical_bias="0.19999999" />
-
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/tSubtittle1"
@@ -386,13 +388,13 @@
         android:layout_height="wrap_content"
         android:text="transasctionType"
         android:textColor="@color/subtitle_grey"
-        android:textSize="8sp"
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="@+id/tTile1"
         app:layout_constraintEnd_toEndOf="@+id/tTile1"
-        app:layout_constraintHorizontal_bias="0.05"
+        app:layout_constraintHorizontal_bias="0.052"
         app:layout_constraintStart_toStartOf="@+id/tTile1"
         app:layout_constraintTop_toBottomOf="@+id/tTitle1"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="1.0" />
 
     <Space
         android:id="@+id/tTile2"
@@ -414,19 +416,20 @@
         app:layout_constraintTop_toTopOf="@+id/tTile2"
         app:srcCompat="@color/tab_passive_purple" />
 
+
     <TextView
         android:id="@+id/tTitle2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="transasctionTitle"
         android:textColor="@color/title_grey"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="@+id/tTile2"
         app:layout_constraintEnd_toEndOf="@+id/tTile2"
-        app:layout_constraintHorizontal_bias="0.05"
+        app:layout_constraintHorizontal_bias="0.049"
         app:layout_constraintStart_toStartOf="@+id/tTile2"
         app:layout_constraintTop_toTopOf="@+id/tTile2"
-        app:layout_constraintVertical_bias="0.19999999" />
-
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/tSubtittle2"
@@ -434,7 +437,7 @@
         android:layout_height="wrap_content"
         android:text="transasctionType"
         android:textColor="@color/subtitle_grey"
-        android:textSize="8sp"
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="@+id/tTile2"
         app:layout_constraintEnd_toEndOf="@+id/tTile2"
         app:layout_constraintHorizontal_bias="0.0"
@@ -448,12 +451,13 @@
         android:layout_height="wrap_content"
         android:text="transasctionAmount"
         android:textColor="@color/success_green"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="@+id/tTile2"
         app:layout_constraintEnd_toEndOf="@+id/tTile2"
-        app:layout_constraintHorizontal_bias="0.95"
+        app:layout_constraintHorizontal_bias="0.938"
         app:layout_constraintStart_toStartOf="@+id/tTile2"
         app:layout_constraintTop_toTopOf="@+id/tTile2"
-        app:layout_constraintVertical_bias="0.19999999" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/tDate2"
@@ -461,7 +465,7 @@
         android:layout_height="wrap_content"
         android:text="transasctionDate"
         android:textColor="@color/subtitle_grey"
-        android:textSize="8sp"
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="@+id/tTile2"
         app:layout_constraintEnd_toEndOf="@+id/tTile2"
         app:layout_constraintHorizontal_bias="0.95"

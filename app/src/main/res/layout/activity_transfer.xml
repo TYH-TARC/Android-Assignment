@@ -103,17 +103,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/referenceInput" />
 
-<!--    <TextView-->
-<!--        android:id="@+id/textView"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:text="@string/transfer_amount"-->
-<!--        android:textSize="18sp"-->
-<!--        app:layout_constraintBottom_toBottomOf="@+id/editTextNumber"-->
-<!--        app:layout_constraintEnd_toEndOf="@+id/editTextNumber"-->
-<!--        app:layout_constraintHorizontal_bias="0.03"-->
-<!--        app:layout_constraintStart_toStartOf="@+id/editTextNumber"-->
-<!--        app:layout_constraintTop_toTopOf="@+id/editTextNumber" />-->
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -24,9 +24,10 @@ class Transfer : AppCompatActivity() {
         val references = findViewById<EditText>(R.id.referenceInput)
 
         val intent = intent
-        val username = intent.getStringExtra("Username")
-        val password = intent.getStringExtra("Password")
-        val balance = intent.getStringExtra("Wallet")
+        val username = intent.getStringExtra("Username").toString()
+        val password = intent.getStringExtra("Password").toString()
+        val balance = intent.getStringExtra("Wallet").toString()
+
 
         fun backToHomePage(view: View){
             val changePage = Intent(this,HomePage::class.java)
@@ -39,6 +40,7 @@ class Transfer : AppCompatActivity() {
         fun log(msg:String){
             Log.d(TAG,"$msg")
         }
+        log(balance)
 
         fun printMesaage(msg: String){
             Toast.makeText(this, msg, Toast.LENGTH_LONG).show()
@@ -90,6 +92,8 @@ class Transfer : AppCompatActivity() {
             path1.get()
                     .addOnSuccessListener { documents ->
                         for (x in documents) {
+                            log(x.toString())
+                            log(documents.toString())
                             var id:String = x["id"].toString()
                             val newSender = hashMapOf(
                                     "Wallet" to newSenderBalance
@@ -136,7 +140,7 @@ class Transfer : AppCompatActivity() {
                     "Reference" to ref,
                     "Type" to "Rececive"
             )
-            val path1 = db.collection("Users/$username1/Transactions")
+            val path1 = db.collection("Users").document(username1).collection("Transactions")
             val path2 = db.collection("Users/$username2/Transactions")
 
             addData(path1,data1)
@@ -150,21 +154,16 @@ class Transfer : AppCompatActivity() {
             val colRef = db.collection("Users")
             var returnValue: Boolean = false
 
-            colRef.addSnapshotListener { value, e ->
+            colRef.get().addOnSuccessListener { docs ->
                 log("Fetching Data")
-                if (e != null) {
-                    Log.w(TAG, "Listen Failed.", e)
-                    return@addSnapshotListener
-                }
-
                 val users = ArrayList<String>()
-                for (doc in value!!) {
-                    doc.getString("Username")?.let {
-                        users.add(it)
-                    }
+                for (doc in docs) {
+                    val data = doc.data
+                    users.add(data?.get("Username").toString())
                 }
 
                 for (username in users) {
+                    log("tan : user ; $targetAccountName : $username ; valid : ${targetAccountName == username}")
                     if (targetAccountName == username) {
                         val username = targetAccountName
                         Log.d(TAG, "User available")
@@ -174,6 +173,8 @@ class Transfer : AppCompatActivity() {
                         printMesaage("User not available")
                     }
                 }
+            }.addOnFailureListener { e->
+                log("ERROR : $e")
             }
 
 
@@ -208,7 +209,9 @@ class Transfer : AppCompatActivity() {
 
         val transferButton = findViewById<Button>(R.id.transferToButton)
         transferButton.setOnClickListener(){
+            log("Button Clicked")
             val paymentAmount = findViewById<EditText>(R.id.amountInput).text.toString().toFloat()
+            log("Payment Val : $paymentAmount")
             if(paymentAmount != null){
                 log("Clicked + $paymentAmount")
                 checkBalance(paymentAmount)

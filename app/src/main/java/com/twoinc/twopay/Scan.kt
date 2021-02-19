@@ -30,7 +30,7 @@ class Scan : AppCompatActivity() {
     fun scanQRCode(){
         val integrator = IntentIntegrator(this).apply {
             captureActivity = CaptureActivity::class.java
-            setOrientationLocked(true)
+            setOrientationLocked(false)
             setDesiredBarcodeFormats(IntentIntegrator.ALL_CODE_TYPES)
             setPrompt("Please show your code")
         }
