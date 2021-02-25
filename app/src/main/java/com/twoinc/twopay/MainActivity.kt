@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.EditText
+import android.widget.Toast
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import java.util.*
@@ -19,6 +20,10 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+    }
+
+    fun print(msg: String){
+        Toast.makeText(this, msg, Toast.LENGTH_LONG).show()
     }
 
     fun signUpPage(view: View){
@@ -45,14 +50,14 @@ class MainActivity : AppCompatActivity() {
         if(usernameField.text.toString().isNotEmpty()){
             Log.v("EditText","Username : " + usernameField.text.toString())
         }else(
-                Log.d(TAG,"Username is null")
+                print("Username is null")
         )
 
         val passwordField : EditText = findViewById(R.id.passwordField)
         if(passwordField.text.toString().isNotEmpty()){
             Log.v("EditText","Password : " + passwordField.text.toString())
         }else(
-                Log.d(TAG,"Password is null")
+                print("Password is null")
                 )
         
         colRef.addSnapshotListener{ value, e ->
@@ -69,38 +74,62 @@ class MainActivity : AppCompatActivity() {
             }
             Log.d(TAG,"User list : $users")
             if(usernameField.text.toString().isNotBlank() && passwordField.text.toString().isNotEmpty()){
-                for(username in users){
-                    if(usernameField.text.toString() == username){
-                        val username = usernameField.text.toString()
-                        Log.d(TAG, "User available")
-                        db.collection("Users")
-                                .whereEqualTo("Username", username)
-                                .get()
-                                .addOnSuccessListener { documents ->
-                                    for (document in documents) {
-                                        val data = document.data
-                                        val password = passwordField.text.toString()
-                                        if(password == data["Password"].toString() ){
-                                            Log.d(TAG, "${document.id} => ${data["Password"]} + Success")
-                                            goToHomePage()
-                                        }
-
+                Log.d("User Index", users.indexOf(usernameField.text.toString()).toString() )
+                val userIndex = users.indexOf(usernameField.text.toString())
+                val boolFlag = userIndex == -1
+                Log.d("User Index Bool",boolFlag.toString())
+                if(userIndex == -1){
+                        print("Wrong Username or Password")
+                }else{
+                    val username = usernameField.text.toString()
+                    Log.d(TAG, "User available")
+                    db.collection("Users")
+                            .whereEqualTo("Username", username)
+                            .get()
+                            .addOnSuccessListener { documents ->
+                                for (document in documents) {
+                                    val data = document.data
+                                    val password = passwordField.text.toString()
+                                    if(password == data["Password"].toString() ){
+                                        Log.d(TAG, "${document.id} => ${data["Password"]} + Success")
+                                        goToHomePage()
                                     }
+
                                 }
-                                .addOnFailureListener { exception ->
-                                    Log.w(TAG, "Error getting documents: ", exception)
-                                }
-                    }else(
-                            Log.d(TAG,"Wrong Password or Username")
-                    )
+                            }
+                            .addOnFailureListener { exception ->
+                                Log.w(TAG, "Error getting documents: ", exception)
+                            }}
                 }
+//                for(username in users){
+//                    if(usernameField.text.toString() == username){
+//                        val username = usernameField.text.toString()
+//                        Log.d(TAG, "User available")
+//                        db.collection("Users")
+//                                .whereEqualTo("Username", username)
+//                                .get()
+//                                .addOnSuccessListener { documents ->
+//                                    for (document in documents) {
+//                                        val data = document.data
+//                                        val password = passwordField.text.toString()
+//                                        if(password == data["Password"].toString() ){
+//                                            Log.d(TAG, "${document.id} => ${data["Password"]} + Success")
+//                                            goToHomePage()
+//                                        }
+//
+//                                    }
+//                                }
+//                                .addOnFailureListener { exception ->
+//                                    Log.w(TAG, "Error getting documents: ", exception)
+//                                }}
+//                }
             }
 
 
     }
 
 
-}}
+}
 
 
 

@@ -9,7 +9,11 @@
         android:roundIcon="@drawable/ic_logo_color"
         android:supportsRtl="true"
         android:theme="@style/Theme.TwoPay">
-        <activity android:name=".PrivacySetting"></activity>
+        <activity android:name=".ConfirmPayment"></activity>
+        <activity android:name=".Payment" />
+        <activity android:name=".addNewCard" />
+        <activity android:name=".reloadGateway_bank" />
+        <activity android:name=".PrivacySetting" />
         <activity android:name=".ContactSetting" />
         <activity android:name=".Setting" />
         <activity android:name=".EventPage">

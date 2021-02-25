@@ -14,7 +14,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@color/gradient_StartColor" />
+        app:srcCompat="@drawable/ic_loginback" />
 
     <Space
         android:id="@+id/lowerSpace"
@@ -155,27 +155,27 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <CheckBox
-        android:id="@+id/passwordToggle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="19dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/passwordField"
-        app:layout_constraintTop_toBottomOf="@+id/upperSpace"
-        app:layout_constraintVertical_bias="0.16000003" />
+<!--    <CheckBox-->
+<!--        android:id="@+id/passwordToggle"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="19dp"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toEndOf="@+id/passwordField"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/upperSpace"-->
+<!--        app:layout_constraintVertical_bias="0.16000003" />-->
 
-    <CheckBox
-        android:id="@+id/passCodeToggle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/passcodeField"
-        app:layout_constraintTop_toBottomOf="@+id/upperSpace"
-        app:layout_constraintVertical_bias="0.37" />
+<!--    <CheckBox-->
+<!--        android:id="@+id/passCodeToggle"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.0"-->
+<!--        app:layout_constraintStart_toEndOf="@+id/passcodeField"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/upperSpace"-->
+<!--        app:layout_constraintVertical_bias="0.37" />-->
 
     <EditText
         android:id="@+id/passcodeField"
@@ -185,6 +185,7 @@
         android:layout_marginLeft="50dp"
         android:layout_marginEnd="50dp"
         android:layout_marginRight="50dp"
+        android:maxLength="6"
         android:ems="10"
         android:hint="@string/signup_code"
         android:inputType="numberPassword"

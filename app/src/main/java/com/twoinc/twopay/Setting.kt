@@ -74,12 +74,13 @@ class Setting : AppCompatActivity() {
 
 
         val logoutBut = findViewById<Button>(R.id.logout)
-        val homeBut = findViewById<Button>(R.id.backToHome)
+
 
         fun logout(){
             val changePage = Intent(this,MainActivity::class.java)
             startActivity(changePage)
         }
+        val homeBut = findViewById<Button>(R.id.backToHome)
 
         fun backToHome(){
             val changPage = Intent(this,HomePage::class.java)

@@ -1,0 +1,335 @@
+
+//        fun addData(path:CollectionReference,value: Any){
+//            log("Add data")
+//            path.add(value)
+//                    .addOnSuccessListener { printMesaage("Success") }
+//                    .addOnFailureListener{ e -> Log.d(TAG,"ADD data Error $e")}
+//        }
+//
+//        fun accountBalance(username: String): Float {
+//            log("Check Account Balance")
+//            val db = Firebase.firestore
+//            val path = db.collection("Users").whereEqualTo("Username",username)
+//            var walletBalance: Float = 0F;
+//            path.get()
+//                    .addOnSuccessListener { documents ->
+//                        for (document in documents) {
+//                            val data = document.data
+//                            walletBalance = data["Wallet"].toString().toFloat()
+//                        }
+//                    }
+//                    .addOnFailureListener { exception ->
+//                        Log.w("accBalance", "Error getting documents: ", exception)
+//                    }
+//            return walletBalance
+//        }
+//
+//        fun changeAccountBalance(username1: String, username2: String, payment: Float) {
+//            log("Change Account Balance")
+//            val senderBalance = accountBalance(username1)
+//            val receiverBalance = accountBalance(username2)
+//            val newSenderBalance = senderBalance - payment
+//            val newReceiverBalance = receiverBalance + payment
+//            val db = Firebase.firestore
+//            val path1 = db.collection("Users").whereEqualTo("Username",username1)
+//
+//
+//            path1.get()
+//                    .addOnSuccessListener { documents ->
+//                        for (x in documents) {
+//                            log(" chg acc balance p1 get x :"+ x.toString())
+//                            log("chg acc balance p1 get docs : " +documents.toString())
+//                            var id:String = x["id"].toString()
+//                            val newSender = hashMapOf(
+//                                    "Wallet" to newSenderBalance
+//                            )
+//                            val pathSend = db.collection("Users").document(id)
+//                            setData(pathSend,newSender)
+//                        }
+//                    }
+//                    .addOnFailureListener { e -> Log.w(TAG, "Error getting documents: ", e)}
+//
+//            val path2 = db.collection("Users").whereEqualTo("Username",username2)
+//            path2.get()
+//                    .addOnSuccessListener { documents ->
+//                        for (x in documents) {
+//                            var id:String = x["id"].toString()
+//                            val newReceive = hashMapOf(
+//                                    "Wallet" to newReceiverBalance
+//                            )
+//                            val pathSend = db.collection("Users").document(id)
+//                            setData(pathSend,newReceive)
+//                        }
+//                    }
+//                    .addOnFailureListener { e -> Log.w(TAG, "Error getting documents: ", e)}
+//                }
+//
+////        fun addTransactions(username1: String,username2: String, amount: Float) {
+////            log("Add transactions")
+////            val db = Firebase.firestore
+////            val ref = references.text.toString()
+////            val data1 = hashMapOf(
+////                    "Sender" to username1,
+////                    "Receiver" to username2,
+////                    "Amount" to amount,
+////                    "Reference" to ref,
+////                    "Type" to "Send"
+////            )
+////            val data2 = hashMapOf(
+////                    "Sender" to username1,
+////                    "Receiver" to username2,
+////                    "Amount" to amount,
+////                    "Reference" to ref,
+////                    "Type" to "Rececive"
+////            )
+////            val path1 = db.collection("Users").document(username1).collection("Transactions")
+////            val path2 = db.collection("Users/$username2/Transactions")
+////
+////            addData(path1,data1)
+////            addData(path2,data2)
+////        }
+////
+//        fun updateData(id: String, newBalance: Float) {
+//            val db = Firebase.firestore
+//            val docRef = db.collection("Users").document(id)
+//            val data = hashMapOf(
+//                    "Wallet" to newBalance
+//            )
+//            docRef.update(data as Map<String, Any>).addOnSuccessListener{
+//                Log.d("UpdateData","Update Success")
+//            }.addOnFailureListener { e->
+//                Log.d("Error","$e")
+//            }
+//        }
+//
+//        fun editBalance(senderUsername: String, receiverName: String, payment: Float) {
+//            val db = Firebase.firestore
+//            log("SenderName : $senderUsername ; ReceiverName : $receiverName; VALUE : $payment")
+//            val senderPath = db.collection("Users").whereEqualTo("Username",senderUsername)
+//            val receiverPath = db.collection("Users").whereEqualTo("Username",receiverName)
+//            senderPath.get().addOnSuccessListener { doc->
+//                for(d in doc){
+//                    val data = d.data
+//                    log("Wallet val sender :  "+ data?.get("Wallet"))
+//                    val walletBalanc = data?.get("Wallet").toString().toDouble()
+//                    val number3digits:Double = String.format("%.3f",walletBalanc).toDouble()
+//                    val number2digits:Double = String.format("%.2f", number3digits).toDouble()
+//                    val solution:Double = String.format("%.1f", number2digits).toDouble()
+//                    val newBalance : Float = (solution - payment).toFloat()
+//                    val id = d.id.toString()
+//                    updateData(id,newBalance)
+//                }
+//            }.addOnFailureListener { e ->
+//                Log.d("Error GET DATA : ","$e")
+//            }
+//            receiverPath.get().addOnSuccessListener { doc->
+//                for(d in doc){
+//                    val data = d.data
+//                    log("Wallet val rec : "+ data?.get("Wallet"))
+//                    val walletBalance = data?.get("Wallet").toString().toDouble()
+//                    val newBalance : Float = (walletBalance + payment).toFloat()
+//                    val id = d.id.toString()
+//                    updateData(id,newBalance)
+//                }
+//            }.addOnFailureListener { e ->
+//                        Log.d("Error GET DATA : ","$e")
+//            }
+//            backToHomePage()
+//
+//
+//        }
+//
+//        fun transfer(usernameR: String, amount: Float) {
+//                val db = Firebase.firestore
+//                val senderPath = db.collection("Users").whereEqualTo("Username", username)
+//                senderPath.get().addOnSuccessListener { documents ->
+//                    for (x in documents) {
+//                        var id: String = x?.get("id").toString()
+//                        val oldbalance: Float = x?.get("Wallet").toString().toFloat()
+//                        val newSenderBalance = oldbalance - amount
+//                        val newSender = hashMapOf(
+//                                "Wallet" to newSenderBalance
+//                        )
+//                        val pathSend = db.collection("Users").document(id)
+//                        setData(pathSend, newSender)
+//                    }
+//                }
+//
+//                val receiverPath = db.collection("Users").whereEqualTo("Username", usernameR)
+//                receiverPath.get().addOnSuccessListener { documents ->
+//                    for (x in documents) {
+//                        var id: String = x?.get("id").toString()
+//                        val oldbalance: Float = x?.get("Wallet").toString().toFloat()
+//                        val newSenderBalance = oldbalance + amount
+//                        val newSender = hashMapOf(
+//                                "Wallet" to newSenderBalance
+//                        )
+//                        val pathSend = db.collection("Users").document(id)
+//                        setData(pathSend, newSender)
+//                    }
+//                }
+//
+//        }
+//
+//        fun transferTo(username: String, amount: Float) {
+//            val db = Firebase.firestore
+//            val path = db.collection("Users").whereEqualTo("Username", username)
+//            path.get().addOnSuccessListener { documents ->
+//                for (x in documents) {
+//                    val id: String = x?.get("id").toString()
+//                    val amountSufficient: Boolean = (balance.toFloat() >= amount)
+//                    if (amountSufficient) {
+//                        val docRef = db.collection("Users")
+//                        val users = ArrayList<String>()
+//                        docRef.get().addOnSuccessListener { documents ->
+//
+//                            for (doc in documents) {
+//                                doc.getString("Username")?.let {
+//                                    users.add(it)
+//                                }
+//                            }
+//                            val userIndex = users.indexOf(username)
+//                            val boolFlag = userIndex == -1
+//                            Log.d("User Index Bool", boolFlag.toString())
+//                            if (userIndex == -1) {
+//                                print("Wrong Username or Password")
+//                            } else {
+//                                val username = username
+//                                Log.d(TAG, "User available")
+//                                transfer(username, amount)
+//                            }
+//                        }
+//                    }
+//                }
+//            }
+//
+//
+//        }
+//        fun callDialog(){
+//            val fm = supportFragmentManager
+//            log("Show Dialog")
+//            val dialog = PaymentDialog()
+//            dialog.show(supportFragmentManager,"PAYMENT")
+//        }
+//
+//        fun paymentPopout(username: String, targetUser: String, payment: Float){
+//            val db = Firebase.firestore
+////            val frag = PaymentDialog().newInstance()
+////            val transaction = supportFragmentManager.beginTransaction()
+////            frag.show(transaction,"PAYMENT")
+//            log("FRAGMENT SHOWING")
+//            callDialog()
+//
+//            val confirmBut = findViewById<Button>(R.id.confirmPayment)
+//            confirmBut.setOnClickListener {
+//                val amountInput = findViewById<EditText>(R.id.paymentAmount)
+//                amountInput.setText(payment.toString())
+//                val passcodeInput = findViewById<EditText>(R.id.passcodeHolder)
+//                var amount = amountInput.text.toString().toFloat()
+//                val docRef = db.collection("Users")
+//                val users = ArrayList<String>()
+//                docRef.get().addOnSuccessListener { documents ->
+//                    for (doc in documents) {
+//                        doc.getString("Username")?.let {
+//                            users.add(it)
+//                        }
+//                    }
+//                    val userIndex = users.indexOf(username)
+//                    val boolFlag = userIndex == -1
+//                    Log.d("User Index Bool", boolFlag.toString())
+//                    if (userIndex == -1) {
+//                        print("Wrong Username or Password")
+//                    } else {
+//                        Log.d(TAG, "User available")
+//                        db.collection("Users")
+//                                .whereEqualTo("Username", username)
+//                                .get()
+//                                .addOnSuccessListener { documents ->
+//                                    for (document in documents) {
+//                                        val data = document.data
+//                                        val password = passcodeInput.text.toString()
+//                                        if (password == data["Passcode"].toString()) {
+//                                            Log.d(TAG, "${document.id} => ${data["Passcode"]} + Success")
+//                                            transferTo(targetUser, amount)
+//                                        }
+//
+//                                    }
+//                                }
+//                                .addOnFailureListener { exception ->
+//                                    Log.w(TAG, "Error getting documents: ", exception)
+//                                }
+//                    }
+//                }
+//            }
+//        }
+//
+//        fun checkAccValid(targetAccountName: String, payment: Float){
+//            log("Check Account Valid")
+//            val db = Firebase.firestore
+//            val colRef = db.collection("Users")
+//            var returnValue: Boolean = false
+//
+//            colRef.get().addOnSuccessListener { docs ->
+//                log("Fetching Data")
+//                val users = ArrayList<String>()
+//                for (doc in docs) {
+//                    val data = doc.data
+//                    users.add(data?.get("Username").toString())
+//                }
+//
+//                for (usernames in users) {
+//                    log("tan : user ; $targetAccountName : $usernames ; valid : ${targetAccountName == username}")
+//                    if (targetAccountName == usernames) {
+//                        val usernames = targetAccountName
+//                        Log.d(TAG, "User available")
+////                        changeAccountBalance(usernames.toString() , targetAccountName, payment)
+//                        paymentPopout(username, targetAccountName, payment)
+////                        editBalance(username, targetAccountName, payment)
+////                        addTransactions(username.toString(),targetAccountName,payment)
+//                    }
+////                    else{
+////                        printMesaage("User not available")
+////                    }
+//                }
+//            }.addOnFailureListener { e->
+//                log("ERROR : $e")
+//            }
+//
+//
+//        }
+//
+//        fun paymentConfirm(payment: Float) {
+//            log("Payment Confirm")
+//            val db = Firebase.firestore
+//            val targetAccountName = findViewById<EditText>(R.id.usernameInput).text.toString()
+//            log("tan $targetAccountName")
+//            checkAccValid(targetAccountName,payment)
+//        }
+//
+//        fun checkBalance(payment: Float){
+//            log("Check Balance + $balance")
+//            if(payment < balance.toString().toFloat()){
+//                log("pass if")
+//                paymentConfirm(payment)
+//            }else{
+//                log("pass else")
+//                printMesaage("Insufficient Balance")
+//
+//            }
+//        }
+//
+//        val transferButton = findViewById<Button>(R.id.transferToButton)
+//        transferButton.setOnClickListener(){
+//            log("Button Clicked")
+//            val paymentAmount = findViewById<EditText>(R.id.amountInput).text
+//            log("Payment Val : $paymentAmount")
+//            if(paymentAmount != null){
+//                log("Clicked + $paymentAmount")
+//                val paymentAmounts = paymentAmount.toString().toFloat()
+//                callDialog()
+//                checkBalance(paymentAmounts)
+//
+//            }else{
+//                printMesaage("Please enter a valid amount")
+//            }
+//        }

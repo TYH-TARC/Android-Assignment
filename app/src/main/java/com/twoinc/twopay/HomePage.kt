@@ -27,11 +27,9 @@ import java.util.*
 import kotlin.collections.ArrayList
 
 
-//TODO : Learn fragment activity : 1 HRS
-//TODO : Implement scan & transfer function : 1.5 HRS
-
-//TODO : Add payment popout : 1 HRS
-//TODO : Add Transaction Page : 1 HRS
+//TODO : Scan > Transfer Function
+//TODO :           ^ Transfer > Add Popout
+//TODO :                        ^ Payment Popout Fragment
 
 class HomePage : AppCompatActivity(){
     private val TAG = "FragmentActivity"
@@ -48,8 +46,23 @@ class HomePage : AppCompatActivity(){
         val intent = intent
         val username = intent.getStringExtra("Username")
         val balance = intent.getStringExtra("Wallet")
+        val result = intent.getStringExtra("Result")
         var walletBalance: String = " "
         var userid:String= " "
+
+        fun print(msg: String){
+            Toast.makeText(this, msg, Toast.LENGTH_LONG).show()
+        }
+
+        fun log(msg: String){
+            Log.d(TAG, "$msg")
+        }
+        log("Result : $result")
+        Log.d("Result Boo : ", (result==null).toString())
+        if(result!=null){
+
+            print(result.toString())
+        }
 
         val userIdRef = db.collection("Users").whereEqualTo("Username", username)
         userIdRef.get()
@@ -94,7 +107,7 @@ class HomePage : AppCompatActivity(){
         val transferBut = findViewById<Button>(R.id.transferButton)
 
         fun transferPage(){
-            val changePage = Intent(this, Transfer::class.java)
+            val changePage = Intent(this, ConfirmPayment::class.java)
             changePage.putExtra("Username", username)
             changePage.putExtra("Wallet", walletBalance)
             startActivity(changePage)
@@ -117,6 +130,9 @@ class HomePage : AppCompatActivity(){
         val scanBut = findViewById<Button>(R.id.scanButton)
         fun scanPage(){
             val changePage = Intent(this, Scan::class.java)
+            changePage.putExtra("Username",username.toString())
+            log("WALLET BALANCE : $walletBalance")
+            changePage.putExtra("Balance",walletBalance)
             startActivity(changePage)
         }
         scanBut.setOnClickListener(){
@@ -126,6 +142,7 @@ class HomePage : AppCompatActivity(){
         val reloadBut = findViewById<Button>(R.id.reloadButton)
         fun reloadPage(){
             val changePage = Intent(this, Reload::class.java)
+            changePage.putExtra("Username",username)
             startActivity(changePage)
         }
         reloadBut.setOnClickListener{
@@ -193,13 +210,7 @@ class HomePage : AppCompatActivity(){
         }}
         getRecentEvents()
 
-        fun print(msg: String){
-            Toast.makeText(this, msg, Toast.LENGTH_LONG).show()
-        }
 
-        fun log(msg: String){
-            Log.d(TAG, "$msg")
-        }
 
 
     fun getTime(s: com.google.firebase.Timestamp): String{
@@ -208,100 +219,100 @@ class HomePage : AppCompatActivity(){
         return dt
     }
 
-        fun getRecentTransactions() {
-            val path = "Transactions"
-            val docgrpRef = db.collectionGroup(path).orderBy("Time",Query.Direction.DESCENDING)
+//        fun getRecentTransactions() {
+//            val path = "Transactions"
+//            val docgrpRef = db.collectionGroup(path).orderBy("Time",Query.Direction.DESCENDING)
+//
+//            val Type = ArrayList<String>()
+//            val Amount = ArrayList<String>()
+//            val Date = ArrayList<String>()
+//            val Owner = ArrayList<String>()
+//
+//            val title1 = findViewById<TextView>(R.id.tTitle1)
+//            val title2 = findViewById<TextView>(R.id.tTitle2)
+//            val subtitle1 = findViewById<TextView>(R.id.tSubtittle1)
+//            val subtitle2 = findViewById<TextView>(R.id.tSubtittle2)
+//            val amount1 = findViewById<TextView>(R.id.tAmount1)
+//            val amount2 = findViewById<TextView>(R.id.tAmount2)
+//            val date1 = findViewById<TextView>(R.id.tDate1)
+//            val date2 = findViewById<TextView>(R.id.tDate2)
+//
+//            docgrpRef.get().addOnSuccessListener { documents ->
+//                for (document in documents) {
+//                    val data = document.data
+//
+//                    if(data["Type"]!=null && data["Transfer Amount"] != null && data["Account Owner"] != null && data["Time"] != null ){
+//                        Type.add(data["Type"].toString())
+//                        Amount.add(data["Transfer Amount"].toString())
+//                        val timeData = getTime(data["Time"] as com.google.firebase.Timestamp)
+//                        Date.add(timeData)
+//                        Owner.add(data["Account Owner"].toString())
+//                    }
+//                }
+//                Log.d(TAG, "\n Owner : $Owner ; Time : $Date ; Amount : $Amount; Type: $Type \n")
+//                if(Owner.size == 1){
+//                    title1.setText(Owner[0])
+//                    subtitle1.setText(Type[0])
+//                    amount1.setText(Amount[0])
+//                    date1.setText(Date[0])
+//                    log("Boo : " +(Type[0] == "Send").toString())
+//                    if(Type[0] == "Send"){
+//                        log((Type[0] == "Send").toString())
+//                        val color = getColor(R.color.alert_red)
+//                        amount1.setTextColor(color)
+//                    }
+//                    title2.setText("No More Recent Transactions")
+//                    subtitle2.setText(" ")
+//                    amount2.setText(" ")
+//                    date2.setText(" ")
+//                }else if (Owner.size > 1){
+//                    title1.setText(Owner[0])
+//                    subtitle1.setText(Type[0])
+//                    amount1.setText(Amount[0])
+//                    date1.setText(Date[0])
+//                    if(Type[0] == "Send"){
+//                        val color = getColor(R.color.alert_red)
+//                        amount1.setTextColor(color)
+//                    }
+//                    title2.setText(Owner[1])
+//                    subtitle2.setText(Type[1])
+//                    amount2.setText(Amount[1])
+//                    date2.setText(Date[1])
+//                    if(Type[1] == "Send"){
+//                        val color = getColor(R.color.alert_red)
+//                        amount2.setTextColor(color)
+//                    }
+//                }else if (Owner.size < 1){
+//                    title1.setText("No More Recent Transactions")
+//                    subtitle1.setText(" ")
+//                    amount1.setText(" ")
+//                    date1.setText(" ")
+//                    title2.setText("No More Recent Transactions")
+//                    subtitle2.setText(" ")
+//                    amount2.setText(" ")
+//                    date2.setText(" ")
+//                }
+//
+//
+//
+//
+//            }.addOnFailureListener { exception ->
+//                Log.w(TAG, "Error getting documents: ", exception)
+//            }
+//
+//
+//
+//
+//
+//
+//
+//        }
+//            getRecentTransactions()
 
-            val Type = ArrayList<String>()
-            val Amount = ArrayList<String>()
-            val Date = ArrayList<String>()
-            val Owner = ArrayList<String>()
-
-            val title1 = findViewById<TextView>(R.id.tTitle1)
-            val title2 = findViewById<TextView>(R.id.tTitle2)
-            val subtitle1 = findViewById<TextView>(R.id.tSubtittle1)
-            val subtitle2 = findViewById<TextView>(R.id.tSubtittle2)
-            val amount1 = findViewById<TextView>(R.id.tAmount1)
-            val amount2 = findViewById<TextView>(R.id.tAmount2)
-            val date1 = findViewById<TextView>(R.id.tDate1)
-            val date2 = findViewById<TextView>(R.id.tDate2)
-
-            docgrpRef.get().addOnSuccessListener { documents ->
-                for (document in documents) {
-                    val data = document.data
-
-                    if(data["Type"]!=null && data["Transfer Amount"] != null && data["Account Owner"] != null && data["Time"] != null ){
-                        Type.add(data["Type"].toString())
-                        Amount.add(data["Transfer Amount"].toString())
-                        val timeData = getTime(data["Time"] as com.google.firebase.Timestamp)
-                        Date.add(timeData)
-                        Owner.add(data["Account Owner"].toString())
-                    }
-                }
-                Log.d(TAG, "\n Owner : $Owner ; Time : $Date ; Amount : $Amount; Type: $Type \n")
-                if(Owner.size == 1){
-                    title1.setText(Owner[0])
-                    subtitle1.setText(Type[0])
-                    amount1.setText(Amount[0])
-                    date1.setText(Date[0])
-                    log("Boo : " +(Type[0] == "Send").toString())
-                    if(Type[0] == "Send"){
-                        log((Type[0] == "Send").toString())
-                        val color = getColor(R.color.alert_red)
-                        amount1.setTextColor(color)
-                    }
-                    title2.setText("No More Recent Transactions")
-                    subtitle2.setText(" ")
-                    amount2.setText(" ")
-                    date2.setText(" ")
-                }else if (Owner.size > 1){
-                    title1.setText(Owner[0])
-                    subtitle1.setText(Type[0])
-                    amount1.setText(Amount[0])
-                    date1.setText(Date[0])
-                    if(Type[0] == "Send"){
-                        val color = getColor(R.color.alert_red)
-                        amount1.setTextColor(color)
-                    }
-                    title2.setText(Owner[1])
-                    subtitle2.setText(Type[1])
-                    amount2.setText(Amount[1])
-                    date2.setText(Date[1])
-                    if(Type[1] == "Send"){
-                        val color = getColor(R.color.alert_red)
-                        amount2.setTextColor(color)
-                    }
-                }else if (Owner.size < 1){
-                    title1.setText("No More Recent Transactions")
-                    subtitle1.setText(" ")
-                    amount1.setText(" ")
-                    date1.setText(" ")
-                    title2.setText("No More Recent Transactions")
-                    subtitle2.setText(" ")
-                    amount2.setText(" ")
-                    date2.setText(" ")
-                }
-
-
-
-
-            }.addOnFailureListener { exception ->
-                Log.w(TAG, "Error getting documents: ", exception)
-            }
-
-
-
-
-
-
-
-        }
-            getRecentTransactions()
-
-        val eventBut1 = findViewById<ImageButton>(R.id.eventPic1)
-        eventBut1.setOnClickListener{
-            Log.d(TAG, "Event Pressed")
-        }
+//        val eventBut1 = findViewById<ImageButton>(R.id.eventPic1)
+//        eventBut1.setOnClickListener{
+//            Log.d(TAG, "Event Pressed")
+//        }
 
 
 
