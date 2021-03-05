@@ -50,8 +50,8 @@ class reloadGateway_bank : AppCompatActivity() {
             startActivity(changePage)
         }
 
-        val bankButtonList =  arrayOf<Int>(R.id.maybankBut,R.id.pubBut,R.id.hongBut,R.id.cimbBut)
-        val gatewayList = arrayOf<String>("Bank_Maybank","Bank_PublicBank","Bank_HongLeongBank","Bank_CIMBBAnk")
+        val bankButtonList =  arrayOf<Int>(R.id.maybankBut,R.id.pubBut,R.id.hongBut,R.id.cimbBut,R.id.masterBut,R.id.visaBut)
+        val gatewayList = arrayOf<String>("Bank_Maybank","Bank_PublicBank","Bank_HongLeongBank","Bank_CIMBBAnk","Card_Master","Card_Visa")
         val iterationCount: Int = bankButtonList.size - 1
         for(x in 0..iterationCount){
             Log.d("Button ID",x.toString())

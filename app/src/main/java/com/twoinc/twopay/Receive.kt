@@ -18,7 +18,7 @@ import com.google.zxing.WriterException
 
 @Suppress("DEPRECATION")
 class Receive : AppCompatActivity() {
-    val TAG = "FragmentActivity"
+    val TAG = "Receive"
     @SuppressLint("UseCompatLoadingForDrawables")
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     override fun onCreate(savedInstanceState: Bundle?) {

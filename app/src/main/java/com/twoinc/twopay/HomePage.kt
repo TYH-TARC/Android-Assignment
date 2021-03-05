@@ -27,19 +27,14 @@ import java.util.*
 import kotlin.collections.ArrayList
 
 
-//TODO : Scan > Transfer Function
-//TODO :           ^ Transfer > Add Popout
-//TODO :                        ^ Payment Popout Fragment
-
 class HomePage : AppCompatActivity(){
-    private val TAG = "FragmentActivity"
+    private val TAG = "Home Page"
 
     @RequiresApi(Build.VERSION_CODES.Q)
     @SuppressLint("WrongViewCast")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home_page)
-
         val db = Firebase.firestore
         val accountBalance = findViewById<TextView>(R.id.walletBalance)
 
@@ -57,6 +52,7 @@ class HomePage : AppCompatActivity(){
         fun log(msg: String){
             Log.d(TAG, "$msg")
         }
+
         log("Result : $result")
         Log.d("Result Boo : ", (result==null).toString())
         if(result!=null){

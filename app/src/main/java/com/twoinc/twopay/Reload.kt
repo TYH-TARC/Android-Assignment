@@ -10,7 +10,7 @@ import java.lang.NumberFormatException
 
 class Reload : AppCompatActivity() {
 
-    val TAG = "FragmentActivity"
+    val TAG = "Reload"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_reload)

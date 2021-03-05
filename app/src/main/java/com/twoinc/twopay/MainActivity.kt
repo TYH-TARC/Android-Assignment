@@ -13,7 +13,7 @@ import java.util.*
 import kotlin.collections.ArrayList
 
 class MainActivity : AppCompatActivity() {
-    private val TAG = "FragmentActivity"
+    private val TAG = "LOGIN"
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -53,7 +53,7 @@ class MainActivity : AppCompatActivity() {
                 print("Username is null")
         )
 
-        val passwordField : EditText = findViewById(R.id.passwordField)
+        val passwordField = findViewById<EditText>(R.id.passwordField)
         if(passwordField.text.toString().isNotEmpty()){
             Log.v("EditText","Password : " + passwordField.text.toString())
         }else(
@@ -90,6 +90,7 @@ class MainActivity : AppCompatActivity() {
                                 for (document in documents) {
                                     val data = document.data
                                     val password = passwordField.text.toString()
+                                    Log.d(TAG,"Password : $password + ${passwordField}")
                                     if(password == data["Password"].toString() ){
                                         Log.d(TAG, "${document.id} => ${data["Password"]} + Success")
                                         goToHomePage()
@@ -101,28 +102,6 @@ class MainActivity : AppCompatActivity() {
                                 Log.w(TAG, "Error getting documents: ", exception)
                             }}
                 }
-//                for(username in users){
-//                    if(usernameField.text.toString() == username){
-//                        val username = usernameField.text.toString()
-//                        Log.d(TAG, "User available")
-//                        db.collection("Users")
-//                                .whereEqualTo("Username", username)
-//                                .get()
-//                                .addOnSuccessListener { documents ->
-//                                    for (document in documents) {
-//                                        val data = document.data
-//                                        val password = passwordField.text.toString()
-//                                        if(password == data["Password"].toString() ){
-//                                            Log.d(TAG, "${document.id} => ${data["Password"]} + Success")
-//                                            goToHomePage()
-//                                        }
-//
-//                                    }
-//                                }
-//                                .addOnFailureListener { exception ->
-//                                    Log.w(TAG, "Error getting documents: ", exception)
-//                                }}
-//                }
             }
 
 

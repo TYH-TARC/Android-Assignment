@@ -15,7 +15,7 @@ class Setting : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_setting)
 
-        val TAG = "Fragment Activity"
+        val TAG = "Setting"
         val db = Firebase.firestore
         val intents = intent
         val username = intents.getStringExtra("Username")
@@ -79,6 +79,7 @@ class Setting : AppCompatActivity() {
         fun logout(){
             val changePage = Intent(this,MainActivity::class.java)
             startActivity(changePage)
+            finish()
         }
         val homeBut = findViewById<Button>(R.id.backToHome)
 

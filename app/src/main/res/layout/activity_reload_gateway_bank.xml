@@ -100,10 +100,10 @@
 
             <ImageView
                 android:id="@+id/maybankLogo"
-                android:layout_width="wrap_content"
-                android:layout_gravity="center_vertical"
+                android:layout_width="99dp"
                 android:layout_height="40dp"
-                app:srcCompat="@drawable/ic_launcher_background" />
+                android:layout_gravity="center_vertical"
+                app:srcCompat="@mipmap/maybank" />
 
             <TextView
                 android:id="@+id/maybankText"
@@ -129,10 +129,10 @@
 
             <ImageView
                 android:id="@+id/pubLogo"
-                android:layout_width="wrap_content"
-                android:layout_gravity="center_vertical"
+                android:layout_width="100dp"
                 android:layout_height="40dp"
-                app:srcCompat="@drawable/ic_launcher_background" />
+                android:layout_gravity="center_vertical"
+                app:srcCompat="@mipmap/public_bank" />
 
             <TextView
                 android:id="@+id/pubText"
@@ -158,10 +158,10 @@
 
             <ImageView
                 android:id="@+id/hongLogo"
-                android:layout_width="wrap_content"
-                android:layout_gravity="center_vertical"
+                android:layout_width="99dp"
                 android:layout_height="40dp"
-                app:srcCompat="@drawable/ic_launcher_background" />
+                android:layout_gravity="center_vertical"
+                app:srcCompat="@mipmap/hongleong_bank" />
 
             <TextView
                 android:id="@+id/hongText"
@@ -187,10 +187,10 @@
 
             <ImageView
                 android:id="@+id/cimbLogo"
-                android:layout_width="wrap_content"
-                android:layout_gravity="center_vertical"
+                android:layout_width="100dp"
                 android:layout_height="40dp"
-                app:srcCompat="@drawable/ic_launcher_background" />
+                android:layout_gravity="center_vertical"
+                app:srcCompat="@mipmap/cimb_bank" />
 
             <TextView
                 android:id="@+id/cimbText"
@@ -201,6 +201,64 @@
 
             <Button
                 android:id="@+id/cimbBut"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginEnd="20dp"
+                android:layout_marginRight="20dp"
+                android:text="Reload"
+                app:backgroundTint="@color/button_yellow" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
+
+            <ImageView
+                android:id="@+id/masterLogo"
+                android:layout_width="100dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center_vertical"
+                app:srcCompat="@mipmap/master" />
+
+            <TextView
+                android:id="@+id/masterText"
+                android:layout_width="194dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="MASTERCARD" />
+
+            <Button
+                android:id="@+id/masterBut"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginEnd="20dp"
+                android:layout_marginRight="20dp"
+                android:text="Reload"
+                app:backgroundTint="@color/button_yellow" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
+
+            <ImageView
+                android:id="@+id/visaLogo"
+                android:layout_width="100dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center_vertical"
+                app:srcCompat="@mipmap/visa" />
+
+            <TextView
+                android:id="@+id/visaText"
+                android:layout_width="194dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="VISA CARD " />
+
+            <Button
+                android:id="@+id/visaBut"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="end"
@@ -231,7 +289,7 @@
             android:layout_weight="2"
             android:insetTop="0dp"
             android:insetBottom="0dp"
-            android:text="Bank"
+            android:text="Gateway"
             app:backgroundTint="@color/highlight_purple"
             app:cornerRadius="0dp"
             app:elevation="0dp" />

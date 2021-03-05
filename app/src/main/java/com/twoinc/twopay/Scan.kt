@@ -20,12 +20,7 @@ import kotlin.math.log
 @Suppress("DEPRECATION")
 @SuppressLint("WrongViewCast")
 class Scan : AppCompatActivity() {
-    companion object{
-        var Username = null
-        var Balance = null
-    }
-
-    private val TAG = "FragmentActivity"
+    private val TAG = "Scan"
     val db = Firebase.firestore
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

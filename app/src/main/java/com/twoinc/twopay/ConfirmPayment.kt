@@ -1,6 +1,7 @@
 package com.twoinc.twopay
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -96,6 +97,12 @@ class ConfirmPayment : AppCompatActivity() {
 
         }
 
+        fun backToHome(){
+            val changePage = Intent(this,HomePage::class.java)
+            changePage.putExtra("Username",username)
+            startActivity(changePage)
+        }
+
         fun transaction(){
             log("Transaction")
             val amount = targetAmount.text.toString().toFloat()
@@ -145,13 +152,15 @@ class ConfirmPayment : AppCompatActivity() {
                     log("R set complete")
                 }
             }.addOnFailureListener{e -> log("Receiver Error : $e")}
+            finish()
+            backToHome()
         }
 
         fun transfer(){
             log("Transfer")
-            printMessage("Loading Transactions, It will take about 5 seconds")
-            log("TRANSFER CHECK"+(checkAccValid()).toString())
-            Thread.sleep(2000)
+//            printMessage("Loading Transactions, It will take about 5 seconds")
+//            log("TRANSFER CHECK"+(checkAccValid()).toString())
+//            Thread.sleep(2000)
             if( checkAccValid() && checkAccountBalance() && passcodeValidation() ){
                 log("Pass checking")
                 transaction()
@@ -201,7 +210,7 @@ class ConfirmPayment : AppCompatActivity() {
                         val index = userList.indexOf(accName)
                         log("INDEX "+index)
                         if (index == -1){
-                            printMessage("Searching User")
+//                            printMessage("Searching User")
                         }else{
                             printMessage("User Found")
                             accFlag.text = "/"

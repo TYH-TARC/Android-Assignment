@@ -23,7 +23,7 @@ class PrivacySetting : AppCompatActivity() {
         val saveBut = findViewById<Button>(R.id.savePriBut)
 
         fun log(msg:String){
-            val TAG = "FragmentActivity"
+            val TAG = "Privacy Setting"
             Log.d(TAG,"$msg")
         }
 
