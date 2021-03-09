@@ -18,10 +18,6 @@ import com.squareup.picasso.Picasso
 import java.time.Instant
 import java.time.ZoneId
 
-//TODO  No Activity found to handle Intent { act=android.intent.action.VIEW dat=null }
-//TODO URL Control
-//TODO date data type
-
 class EventPage : AppCompatActivity() {
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {

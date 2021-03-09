@@ -28,17 +28,6 @@ class reloadGateway_bank : AppCompatActivity() {
             backToHome()
         }
 
-//        val cardBut = findViewById<Button>(R.id.card_Frag)
-//        fun chgFragment(){
-//            val changePage = Intent(this,reloadGateway::class.java)
-//            changePage.putExtra("Value",reloadVal)
-//            changePage.putExtra("Username",username)
-//            startActivity(changePage)
-//        }
-//        cardBut.setOnClickListener{
-//            chgFragment()
-//        }
-
         val amountHolder = findViewById<TextView>(R.id.valueHolder)
         amountHolder.setText("RM $reloadVal")
 

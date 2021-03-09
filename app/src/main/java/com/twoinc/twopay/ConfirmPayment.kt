@@ -111,7 +111,6 @@ class ConfirmPayment : AppCompatActivity() {
             val sender = db.collection("Users").whereEqualTo("Username",user)
             log("Start Sender : $user")
             sender.get().addOnSuccessListener { docs ->
-//                val data = docs.documents?.get(0)
                 log("ENTER LISTENER S : ${docs.size()}")
                 for(doc in docs){
                     log("ENTER LOOP S")
@@ -158,9 +157,6 @@ class ConfirmPayment : AppCompatActivity() {
 
         fun transfer(){
             log("Transfer")
-//            printMessage("Loading Transactions, It will take about 5 seconds")
-//            log("TRANSFER CHECK"+(checkAccValid()).toString())
-//            Thread.sleep(2000)
             if( checkAccValid() && checkAccountBalance() && passcodeValidation() ){
                 log("Pass checking")
                 transaction()
@@ -210,9 +206,7 @@ class ConfirmPayment : AppCompatActivity() {
                         val index = userList.indexOf(accName)
                         log("INDEX "+index)
                         if (index == -1){
-//                            printMessage("Searching User")
                         }else{
-                            printMessage("User Found")
                             accFlag.text = "/"
                             checkFlag()
                         }
