@@ -27,8 +27,8 @@ class Payment : AppCompatActivity() {
         val successBut = findViewById<Button>(R.id.successBut)
         val deniedBut = findViewById<Button>(R.id.deniedBut)
         
-        gatewayHolder.setText(gateway)
-        amountHolder.setText(amount)
+        gatewayHolder.setText("Reload Gateway : $gateway")
+        amountHolder.setText("Reload Amount : RM $amount")
         
         fun backToHome(res: String){
             val changePage = Intent(this,HomePage::class.java)
