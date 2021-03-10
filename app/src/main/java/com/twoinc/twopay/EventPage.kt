@@ -83,19 +83,6 @@ class EventPage : AppCompatActivity() {
 
 
 
-        fun openWebPage(url: String) {
-            Log.d("OpenWebPage", "$url")
-            var webpage = Uri.parse(url)
-            if (!url.startsWith("http://") && !url.startsWith("https://")) {
-                webpage = Uri.parse("http://$url")
-            }
-            val intent = Intent(Intent.ACTION_VIEW, webpage)
-            if (intent.resolveActivity(packageManager) != null) {
-                startActivity(intent)
-            }
-        }
-
-
 
 
 

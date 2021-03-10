@@ -15,16 +15,14 @@ import kotlin.collections.ArrayList
 class MainActivity : AppCompatActivity() {
     private val TAG = "LOGIN"
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
     }
 
-    fun print(msg: String){
-        Toast.makeText(this, msg, Toast.LENGTH_LONG).show()
-    }
+//    fun print(msg: String){
+//        Toast.makeText(this, msg, Toast.LENGTH_LONG).show()
+//    }
 
     fun signUpPage(view: View){
         val changePage = Intent(this,SignUp::class.java)
@@ -49,16 +47,14 @@ class MainActivity : AppCompatActivity() {
         val usernameField : EditText = findViewById(R.id.usernameField)
         if(usernameField.text.toString().isNotEmpty()){
             Log.v("EditText","Username : " + usernameField.text.toString())
-        }else(
-                print("Username is null")
-        )
+        }
+
 
         val passwordField = findViewById<EditText>(R.id.passwordField)
         if(passwordField.text.toString().isNotEmpty()){
             Log.v("EditText","Password : " + passwordField.text.toString())
-        }else(
-                print("Password is null")
-                )
+        }
+
         
         colRef.addSnapshotListener{ value, e ->
             if(e != null) {
@@ -79,7 +75,7 @@ class MainActivity : AppCompatActivity() {
                 val boolFlag = userIndex == -1
                 Log.d("User Index Bool",boolFlag.toString())
                 if(userIndex == -1){
-                        print("Wrong Username or Password")
+//                        print("Wrong Username or Password")
                 }else{
                     val username = usernameField.text.toString()
                     Log.d(TAG, "User available")

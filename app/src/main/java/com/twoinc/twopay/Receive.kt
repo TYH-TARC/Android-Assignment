@@ -51,7 +51,6 @@ class Receive : AppCompatActivity() {
         val height = 1500
         val bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888)
         val codeWriter = MultiFormatWriter()
-
         try {
             val bitMatrix = codeWriter.encode(text, BarcodeFormat.QR_CODE, width, height)
             for (x in 0 until height){

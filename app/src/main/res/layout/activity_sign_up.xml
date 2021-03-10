@@ -81,7 +81,7 @@
         android:layout_marginRight="50dp"
         android:ems="10"
         android:hint="@string/login_password"
-        android:inputType="textVisiblePassword|textPassword"
+        android:inputType="textPassword"
         android:theme="@style/textInputStyle"
         app:layout_constraintBottom_toBottomOf="@+id/lowerSpace"
         app:layout_constraintEnd_toEndOf="@+id/lowerSpace"
